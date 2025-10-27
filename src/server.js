@@ -16,7 +16,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type"],
 }));
 
-app.use("/api/swagger/index.html", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api/swagger", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/api/saint", saintRoutes);
 
 connectMongoDB();
