@@ -1,5 +1,5 @@
 import express from "express";
-import { getSaintByName } from "../controllers/saintController.js";
+import { getSaintByName, getAllSaints } from "../controllers/saintController.js";
 
 const router = express.Router();
 
@@ -9,6 +9,28 @@ const router = express.Router();
  *   name: Saints
  *   description: Servicios para los caballeros del zodiaco
  */
+
+/**
+ * @swagger
+ * /api/saints:
+ *   get:
+ *     summary: Obtiene todos los caballeros
+ *     tags: [Saints]
+ *     responses:
+ *       200:
+ *         description: Lista de caballeros
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Saint'
+ *       404:
+ *         description: No hay caballeros registrados
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get("/", getAllSaints);
 
 /**
  * @swagger

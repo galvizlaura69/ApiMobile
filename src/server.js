@@ -17,7 +17,7 @@ app.use(cors({
 }));
 
 app.use("/api/swagger", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use("/api/saint", saintRoutes);
+app.use("/api/saints", saintRoutes);
 
 connectMongoDB();
 
