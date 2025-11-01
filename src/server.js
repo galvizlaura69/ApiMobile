@@ -2,8 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectMongoDB } from "./db.js";
-import saintRoutes from "./routes/saintRoutes.js";
 import { swaggerUi, swaggerSpec } from "./config/swagger.js";
+import hunterRoutes from "./routes/hunterRoutes.js"
+import hunterSqlRoutes from "./routes/hunterSqlRoutes.js";
+
 
 dotenv.config();
 
@@ -17,7 +19,8 @@ app.use(cors({
 }));
 
 app.use("/api/swagger", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-app.use("/api/saints", saintRoutes);
+app.use("/api/hunters", hunterRoutes); 
+app.use("/api/hunters-sql", hunterSqlRoutes);
 
 connectMongoDB();
 
