@@ -101,6 +101,50 @@ router.post("/", createHunterSql);
 /**
  * @swagger
  * /api/hunters-sql/{id}:
+ *   put:
+ *     summary: Actualiza un hunter por ID
+ *     tags: [HuntersSQL]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del hunter a actualizar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               nombre:
+ *                 type: string
+ *               edad:
+ *                 type: integer
+ *               altura_cm:
+ *                 type: number
+ *               peso_kg:
+ *                 type: number
+ *               imagen:
+ *                 type: string
+ *               habilidad:
+ *                 type: string
+ *               tiponen:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Hunter actualizado correctamente
+ *       404:
+ *         description: Hunter no encontrado
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.put("/:id", updateHunterSql);
+
+/**
+ * @swagger
+ * /api/hunters-sql/{id}:
  *   delete:
  *     summary: Elimina un hunter por ID
  *     tags: [HuntersSQL]
