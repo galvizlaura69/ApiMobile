@@ -25,14 +25,13 @@ export const getHunterSqlByName = async (req, res) => {
   }
 };
 
-// CREAR
 export const createHunterSql = async (req, res) => {
   try {
     const { nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen } =
       req.body;
 
     const result = await pool.query(
-      `INSERT INTO hunters (nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen)
+      `INSERT INTO hunters (nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen, id)
        VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
       [nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen]
     );
