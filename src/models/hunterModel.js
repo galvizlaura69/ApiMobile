@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const hunterSchema = new mongoose.Schema({
+   _id: { type: String, required: true },
   nombre: String,
   edad: Number,
   altura_cm: Number,
