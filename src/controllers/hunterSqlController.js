@@ -27,20 +27,21 @@ export const getHunterSqlByName = async (req, res) => {
 
 export const createHunterSql = async (req, res) => {
   try {
-    const { nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen } =
-      req.body;
+    const { id, nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen } = req.body;
 
     const result = await pool.query(
-      `INSERT INTO hunters (nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen, id)
-       VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
-      [nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen]
+      `INSERT INTO hunters (id, nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *`,
+      [id, nombre, edad, altura_cm, peso_kg, imagen, habilidad, tiponen]
     );
 
     res.json(result.rows[0]);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "error interno" });
   }
 };
+
 
 export const updateHunterSql = async (req, res) => {
   try {
