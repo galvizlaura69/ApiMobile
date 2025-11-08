@@ -37,7 +37,7 @@ export const updateHunter = async (req, res) => {
     const { nombre } = req.params
     const { _id, ...updateData } = req.body
 
-    const updated = await Hunter.findOneAndUpdate(
+    const updated = await Hunter.update(
       { nombre },  
       updateData,
       { new: true }
