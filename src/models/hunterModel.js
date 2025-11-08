@@ -26,11 +26,15 @@ export class Hunter {
     return await HunterModel.create(data);
   }
 
-  static async update(nombre,data) {
-    return await HunterModel.findByIdAndUpdate(nombre, data, { new: true });
+  static async update(nombre, data) {
+    return await HunterModel.findOneAndUpdate(
+      { nombre },
+      data,
+      { new: true }
+    );
   }
 
   static async delete(nombre) {
-    return await HunterModel.findByIdAndDelete(nombre);
+    return await HunterModel.deleteOne({ nombre });
   }
 }
