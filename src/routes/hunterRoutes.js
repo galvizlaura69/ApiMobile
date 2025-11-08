@@ -132,7 +132,7 @@ router.post("/", createHunter);
 
 /**
  * @swagger
- * /api/hunters/{id}:
+ * /api/hunters/{nombre}:
  *   put:
  *     summary: Actualiza un hunter por ID
  *     tags: [Hunters]
@@ -161,13 +161,13 @@ router.post("/", createHunter);
  *       500:
  *         description: Error interno del servidor
  */
-router.put("/:id", updateHunter);
+router.put("/:nombre", updateHunter);
 
 /**
  * @swagger
- * /api/hunters/{id}:
+ * /api/hunters/{nombre}:
  *   delete:
- *     summary: Elimina un hunter por ID
+ *     summary: Elimina un hunter por nombre
  *     tags: [Hunters]
  *     parameters:
  *       - in: path
@@ -175,7 +175,7 @@ router.put("/:id", updateHunter);
  *         required: true
  *         schema:
  *           type: string
- *         description: ID del hunter a eliminar
+ *         description:  el hunter ha sido eliminado
  *     responses:
  *       200:
  *         description: Hunter eliminado correctamente
@@ -184,6 +184,6 @@ router.put("/:id", updateHunter);
  *       500:
  *         description: Error interno del servidor
  */
-router.delete("/:id", deleteHunter);
+router.delete("/:nombre", deleteHunter);
 
 export default router;

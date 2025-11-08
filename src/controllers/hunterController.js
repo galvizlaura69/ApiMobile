@@ -34,39 +34,39 @@ export const createHunter = async (req, res) => {
 
 export const updateHunter = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { _id, ...updateData } = req.body;
+    const { nombre } = req.params
+    const { _id, ...updateData } = req.body
 
-    const updated = await Hunter.findByIdAndUpdate(
-      id,
+    const updated = await Hunter.findOneAndUpdate(
+      { nombre },  
       updateData,
       { new: true }
-    );
+    )
 
-    if (!updated) {
-      return res.status(404).json({ error: "Hunter no encontrado" });
-    }
+    if (!updated) return res.status(404).json({ error: "Hunter no encontrado" })
 
-    return res.json(updated);
+    return res.json(updated)
 
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Error actualizando hunter" });
+    console.error(error)
+    return res.status(500).json({ error: "Error actualizando hunter" })
   }
-};
-
+}
 
 export const deleteHunter = async (req, res) => {
   try {
-    const { id } = req.params;
-    const deleted = await Hunter.delete({ _id: id });
+    const { nombre } = req.params
+
+    const deleted = await Hunter.delete({ nombre }) 
 
     if (deleted.deletedCount === 0)
-      return res.status(404).json({ error: "Hunter no encontrado" });
+      return res.status(404).json({ error: "Hunter no encontrado" })
 
-    return res.json({ message: "Hunter eliminado" });
+    return res.json({ message: "Hunter eliminado" })
+
   } catch (error) {
-    return res.status(500).json({ error: "Error eliminando hunter" });
+    return res.status(500).json({ error: "Error eliminando hunter" })
   }
-};
+}
+
 
