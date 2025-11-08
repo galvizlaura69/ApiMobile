@@ -138,11 +138,11 @@ router.post("/", createHunter);
  *     tags: [Hunters]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: nombre
  *         required: true
  *         schema:
  *           type: string
- *         description: ID del hunter
+ *         description: nombre del hunter
  *     requestBody:
  *       required: true
  *       content:
@@ -171,7 +171,7 @@ router.put("/:nombre", updateHunter);
  *     tags: [Hunters]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: nombre
  *         required: true
  *         schema:
  *           type: string

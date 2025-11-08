@@ -28,25 +28,22 @@ export const createHunter = async (req, res) => {
     const created = await Hunter.create(req.body);
     return res.status(201).json(created);
   } catch (error) {
+    console.error(error)
     return res.status(500).json({ error: "Error creando hunter" });
   }
 };
+
 
 export const updateHunter = async (req, res) => {
   try {
     const { nombre } = req.params
     const { _id, ...updateData } = req.body
 
-    const updated = await Hunter.update(
-      { nombre },  
-      updateData,
-      { new: true }
-    )
+    const updated = await Hunter.update(nombre, updateData)
 
     if (!updated) return res.status(404).json({ error: "Hunter no encontrado" })
 
     return res.json(updated)
-
   } catch (error) {
     console.error(error)
     return res.status(500).json({ error: "Error actualizando hunter" })
@@ -57,16 +54,16 @@ export const deleteHunter = async (req, res) => {
   try {
     const { nombre } = req.params
 
-    const deleted = await Hunter.delete({ nombre }) 
+    const deleted = await Hunter.delete(nombre)
 
     if (deleted.deletedCount === 0)
       return res.status(404).json({ error: "Hunter no encontrado" })
 
     return res.json({ message: "Hunter eliminado" })
-
   } catch (error) {
     return res.status(500).json({ error: "Error eliminando hunter" })
   }
 }
+
 
 
