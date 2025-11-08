@@ -35,15 +35,24 @@ export const createHunter = async (req, res) => {
 export const updateHunter = async (req, res) => {
   try {
     const { id } = req.params;
-    const updated = await Hunter.update(id, req.body);
 
-    if (!updated) return res.status(404).json({ error: "Hunter no encontrado" });
+    const updated = await Hunter.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ error: "Hunter no encontrado" });
+    }
 
     return res.json(updated);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: "Error actualizando hunter" });
   }
 };
+
 
 export const deleteHunter = async (req, res) => {
   try {
