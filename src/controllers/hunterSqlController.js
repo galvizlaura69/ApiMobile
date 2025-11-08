@@ -42,7 +42,6 @@ export const createHunterSql = async (req, res) => {
   }
 };
 
-
 export const updateHunterSql = async (req, res) => {
   try {
     const { id } = req.params;
