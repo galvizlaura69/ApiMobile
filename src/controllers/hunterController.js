@@ -48,12 +48,14 @@ export const updateHunter = async (req, res) => {
 export const deleteHunter = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await Hunter.delete(id);
+    const deleted = await Hunter.delete({ _id: id });
 
-    if (!deleted) return res.status(404).json({ error: "Hunter no encontrado" });
+    if (deleted.deletedCount === 0)
+      return res.status(404).json({ error: "Hunter no encontrado" });
 
     return res.json({ message: "Hunter eliminado" });
   } catch (error) {
     return res.status(500).json({ error: "Error eliminando hunter" });
   }
 };
+
