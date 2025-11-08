@@ -35,10 +35,11 @@ export const createHunter = async (req, res) => {
 export const updateHunter = async (req, res) => {
   try {
     const { id } = req.params;
+    const { _id, ...updateData } = req.body;
 
     const updated = await Hunter.findByIdAndUpdate(
       id,
-      req.body,
+      updateData,
       { new: true }
     );
 
@@ -47,6 +48,7 @@ export const updateHunter = async (req, res) => {
     }
 
     return res.json(updated);
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Error actualizando hunter" });
