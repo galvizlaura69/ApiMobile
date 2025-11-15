@@ -31,6 +31,14 @@ const options = {
             tipoNen: { type: "string", example: "Enhancer" }
           },
         },
+        Users: {
+          type: "object",
+          properties: {
+            name: { type: "string", example: "Laura" },
+            lastName: { type: "string", example: "Galviz" },
+            date: { type: "string", example: "Sat Nov 15 2025 08:41:37 GMT-0500 (hora estándar de Colombia)" },
+          },
+        },
       },
     },
   },

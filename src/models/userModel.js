@@ -14,10 +14,6 @@ export class User {
     return await UserModel.find();
   }
 
-  static async findByName(nombre) {
-    return await UserModel.find({ nombre: new RegExp(nombre, "i") });
-  }
-
   static async create(data) {
     return await UserModel.create(data);
   }

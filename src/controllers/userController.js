@@ -5,7 +5,7 @@ export const getAllUsers = async (req, res) => {
     const data = await User.findAll();
     return res.json(data);
   } catch (error) {
-    return res.status(500).json({ error: "Error obteniendo hunters" });
+    return res.status(500).json({ error: "Error obteniendo usuarios" });
   }
 };
 
@@ -16,7 +16,7 @@ export const createUser = async (req, res) => {
     return res.status(201).json(created);
   } catch (error) {
     console.error(error)
-    return res.status(500).json({ error: "Error creando hunter" });
+    return res.status(500).json({ error: "Error creando el usuario" });
   }
 };
 
