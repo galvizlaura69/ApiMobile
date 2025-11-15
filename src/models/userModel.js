@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
 
 const UserModel = mongoose.model("users", userSchema);
 
-export class User {
+export class Users {
   static async findAll() {
     return await UserModel.find();
   }
